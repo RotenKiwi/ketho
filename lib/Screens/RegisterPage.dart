@@ -94,13 +94,13 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 Spacer(),
                 CircleAvatar(
-                  radius: 30,
+                  radius: 35,
                   backgroundImage: AssetImage('assets/images/gmail_logo.png'),
                 ),
                 Spacer(),
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: AssetImage('assets/images/twitter_logo.png'),
+                  backgroundImage: AssetImage('assets/images/img.png'),
                 ),
                 Spacer(),
               ],
