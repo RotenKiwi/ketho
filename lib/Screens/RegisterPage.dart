@@ -14,7 +14,7 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: AppBar(
         backgroundColor: Color(0xff77B4B5),
         title: Text(
-          'Login',
+          'Register',
           style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
         ),
       ),
@@ -55,9 +55,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         obscureText: true,
                       ),
-                      TextButton(
-                          onPressed: () {},
-                          child: Text('Dont have an account?')),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          hintText: 'Confirm Password',
+                        ),
+                        obscureText: true,
+                      ),
                     ],
                   ),
                 ),
@@ -76,7 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: TextButton(
                     onPressed: () {},
                     child: Text(
-                      'Login',
+                      'Register',
                       style: TextStyle(
                         color: Color(0xff49C388),
                         fontSize: 25,

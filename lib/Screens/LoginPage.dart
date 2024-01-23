@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ketho/Screens/RegisterPage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         backgroundColor: Color(0xff77B4B5),
         title: Text(
-          'Register',
+          'Login',
           style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
         ),
       ),
@@ -31,7 +32,9 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Spacer(flex: 2,),
+            Spacer(
+              flex: 2,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
@@ -55,18 +58,22 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         obscureText: true,
                       ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          hintText: 'Confirm Password',
-                        ),
-                        obscureText: true,
-                      ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisterPage()));
+                          },
+                          child: Text('Dont have an account?')),
                     ],
                   ),
                 ),
               ),
             ),
-            Spacer(flex: 1,),
+            Spacer(
+              flex: 1,
+            ),
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -74,12 +81,12 @@ class _LoginPageState extends State<LoginPage> {
               ),
               //color: Color(0xffC4EED0),
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 15.0, vertical: 5.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
                 child: TextButton(
                     onPressed: () {},
                     child: Text(
-                      'Register',
+                      'Login',
                       style: TextStyle(
                         color: Color(0xff49C388),
                         fontSize: 25,
@@ -87,7 +94,9 @@ class _LoginPageState extends State<LoginPage> {
                     )),
               ),
             ),
-            Spacer(flex: 2,),
+            Spacer(
+              flex: 2,
+            ),
             Row(
               children: [
                 Spacer(),
@@ -108,20 +117,21 @@ class _LoginPageState extends State<LoginPage> {
                 Spacer(),
               ],
             ),
-            Spacer(flex: 2,),
+            Spacer(
+              flex: 2,
+            ),
             Container(
               height: 35,
               width: double.infinity,
               color: Color(0xff44959F),
               child: TextButton(
-                onPressed: (){},
+                onPressed: () {},
                 child: Text(
                   'Continue as Guest? Click Me',
                   style: TextStyle(color: Color(0xff4569A6), fontSize: 15),
                 ),
               ),
             ),
-
           ],
         ),
       ),
