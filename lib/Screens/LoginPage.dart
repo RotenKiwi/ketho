@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ketho/Screens/Navigate.dart';
 import 'package:ketho/Screens/RegisterPage.dart';
+
+import '../Components/RoundedButton.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -74,25 +77,10 @@ class _LoginPageState extends State<LoginPage> {
             Spacer(
               flex: 1,
             ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                color: Color(0xffC4EED0),
-              ),
-              //color: Color(0xffC4EED0),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
-                child: TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                        color: Color(0xff49C388),
-                        fontSize: 25,
-                      ),
-                    )),
-              ),
+            RoundedButton(
+              text: 'Login',
+              onPressed: (){Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Navigate()));}
             ),
             Spacer(
               flex: 2,

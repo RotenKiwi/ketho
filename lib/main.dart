@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:ketho/Screens/LoginPage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp();
 
   // This widget is the root of your application.
   @override
