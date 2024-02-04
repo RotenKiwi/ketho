@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ketho/Screens/About.dart';
+import 'package:ketho/Screens/CamScreen.dart';
 import 'package:ketho/Screens/Feedback.dart';
 import 'package:ketho/Screens/Payments.dart';
 import 'package:ketho/Screens/Rewards.dart';
@@ -10,13 +12,19 @@ import 'package:ketho/Screens/TripHistory.dart';
 import 'Drawer.dart';
 
 class MapSample extends StatefulWidget {
-  const MapSample({super.key});
+  const MapSample({
+    super.key,
+    required this.camera,
+  });
+
+  final CameraDescription camera;
 
   @override
   State<MapSample> createState() => MapSampleState();
 }
 
 class MapSampleState extends State<MapSample> {
+
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 
@@ -57,12 +65,13 @@ class MapSampleState extends State<MapSample> {
             ),
             Spacer(),
             InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>RewardsPage()));
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RewardsPage()));
               },
               child: Icon(
-                  Icons.card_giftcard,
-                  size: 35,
+                Icons.card_giftcard,
+                size: 35,
               ),
             ),
           ],
@@ -92,19 +101,29 @@ class MapSampleState extends State<MapSample> {
               style: TextStyle(color: Colors.white, fontSize: 20),
             )),
           ),
-          Spacer(flex: 1,),
+          Spacer(
+            flex: 1,
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                color: Color(0xffC93B79),
-              ),
-              //color: Color(0xffC4EED0),
-              child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 15.0, vertical: 20.0),
-                  child: InkWell(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            CamScreen(camera: widget.camera)));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                  color: Color(0xffC93B79),
+                ),
+                //color: Color(0xffC4EED0),
+                child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15.0, vertical: 20.0),
                     child: Row(
                       children: [
                         Spacer(
@@ -125,20 +144,27 @@ class MapSampleState extends State<MapSample> {
                           flex: 3,
                         ),
                       ],
-                    ),
-                  )),
+                    )),
+              ),
             ),
           ),
-          Spacer(flex: 1,),
+          Spacer(
+            flex: 1,
+          ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Spacer(flex: 3,),
+                Spacer(
+                  flex: 3,
+                ),
                 InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentsScreen()));
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PaymentsScreen()));
                   },
                   child: Row(
                     children: [
@@ -155,8 +181,9 @@ class MapSampleState extends State<MapSample> {
                 ),
                 Spacer(),
                 InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>FeedBack()));
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => FeedBack()));
                   },
                   child: Row(
                     children: [
@@ -165,7 +192,9 @@ class MapSampleState extends State<MapSample> {
                     ],
                   ),
                 ),
-                Spacer(flex: 2,),
+                Spacer(
+                  flex: 2,
+                ),
               ],
             ),
           ),
@@ -174,4 +203,3 @@ class MapSampleState extends State<MapSample> {
     );
   }
 }
-

@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:ketho/Screens/RegisterPage.dart';
 import 'package:ketho/Screens/Homepage.dart';
@@ -5,7 +6,9 @@ import '../Data/Users.dart' as user;
 import '../Components/RoundedButton.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({Key? key, required this.camera}) : super(key: key);
+
+  final CameraDescription camera;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -100,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => RegisterPage()));
+                                    builder: (context) => RegisterPage(camera: widget.camera,)));
                           },
                           child: Text('Dont have an account?')),
                     ],
@@ -122,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MapSample())),
+                                      builder: (context) => MapSample(camera: widget.camera,))),
                             )
                           : errorMessage = 'Incorrect Password'
                       : errorMessage = 'User Does not Exist';
@@ -166,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   user.index = -1;
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MapSample()));
+                      MaterialPageRoute(builder: (context) => MapSample(camera: widget.camera,)));
                 },
                 child: Text(
                   'Continue as Guest? Click Me',

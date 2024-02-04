@@ -1,10 +1,13 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:ketho/Components/RoundedButton.dart';
 import '../Data/Users.dart' as user;
 import 'Homepage.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  const RegisterPage({Key? key, required this.camera}) : super(key: key);
+
+  final CameraDescription camera;
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -100,7 +103,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MapSample()))
+                                      builder: (context) => MapSample(camera: widget.camera,)))
                             )
                           : errorMessage = 'Passwords dont match';
                   setState(() {
@@ -141,7 +144,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: TextButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MapSample()));
+                      MaterialPageRoute(builder: (context) => MapSample(camera: widget.camera,)));
                 },
                 child: Text(
                   'Continue as Guest? Click Me',
