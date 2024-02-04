@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ketho/Screens/Navigate.dart';
 import 'package:ketho/Screens/RegisterPage.dart';
-
+import 'package:ketho/Screens/Homepage.dart';
+import '../Data/Users.dart' as user;
 import '../Components/RoundedButton.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,6 +12,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String username = '';
+  String password = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,13 +52,20 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       TextFormField(
+                        onChanged: (value) {
+                          username = value;
+                        },
                         decoration: InputDecoration(
                           hintText: 'Email',
                         ),
                       ),
                       TextFormField(
+                        onChanged: (value) {
+                          password = value;
+                        },
                         decoration: InputDecoration(
                           hintText: 'Password',
                         ),
@@ -78,10 +88,18 @@ class _LoginPageState extends State<LoginPage> {
               flex: 1,
             ),
             RoundedButton(
-              text: 'Login',
-              onPressed: (){Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Navigate()));}
-            ),
+                text: 'Login',
+                onPressed: () {
+                  user.users.contains(username)
+                      ? (password ==
+                              user.password[user.users.indexOf(username)])
+                          ? (Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MapSample())))
+                          : print('Incorrect Credentials')
+                      : print('User Does not Exist');
+                }),
             Spacer(
               flex: 2,
             ),
@@ -89,17 +107,17 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Spacer(),
                 CircleAvatar(
-                  radius: 30,
+                  radius: 25,
                   backgroundImage: AssetImage('assets/images/apple_logo.png'),
                 ),
                 Spacer(),
                 CircleAvatar(
-                  radius: 35,
+                  radius: 25,
                   backgroundImage: AssetImage('assets/images/gmail_logo.png'),
                 ),
                 Spacer(),
                 CircleAvatar(
-                  radius: 30,
+                  radius: 25,
                   backgroundImage: AssetImage('assets/images/img.png'),
                 ),
                 Spacer(),
@@ -113,7 +131,10 @@ class _LoginPageState extends State<LoginPage> {
               width: double.infinity,
               color: Color(0xff44959F),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MapSample()));
+                },
                 child: Text(
                   'Continue as Guest? Click Me',
                   style: TextStyle(color: Color(0xff4569A6), fontSize: 15),

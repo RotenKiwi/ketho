@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ketho/Components/RoundedButton.dart';
-import 'package:ketho/Screens/Navigate.dart';
 
 class FeedBack extends StatelessWidget {
   const FeedBack({Key? key}) : super(key: key);
@@ -82,10 +81,7 @@ class FeedBack extends StatelessWidget {
             children: [
               Spacer(),
               RoundedButton(text: 'Submit', onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Navigate()));
+                Navigator.pop(context);
               },),
               Spacer(),
             ],
