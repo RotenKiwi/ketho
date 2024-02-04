@@ -14,10 +14,13 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String username = '';
   String password = '';
+  String errorMessage = '';
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Color(0xff77B4B5),
         title: Text(
@@ -97,32 +100,40 @@ class _LoginPageState extends State<LoginPage> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => MapSample())))
-                          : print('Incorrect Credentials')
-                      : print('User Does not Exist');
+                          : errorMessage = 'Incorrect Credentials'
+                      : errorMessage = 'User Does not Exist';
+                  setState(() {
+
+                  });
                 }),
+            Text(errorMessage, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.red),),
             Spacer(
               flex: 2,
             ),
-            Row(
-              children: [
-                Spacer(),
-                CircleAvatar(
-                  radius: 25,
-                  backgroundImage: AssetImage('assets/images/apple_logo.png'),
-                ),
-                Spacer(),
-                CircleAvatar(
-                  radius: 25,
-                  backgroundImage: AssetImage('assets/images/gmail_logo.png'),
-                ),
-                Spacer(),
-                CircleAvatar(
-                  radius: 25,
-                  backgroundImage: AssetImage('assets/images/img.png'),
-                ),
-                Spacer(),
-              ],
-            ),
+            (size.height < 5000)
+                ? Row(
+                    children: [
+                      Spacer(),
+                      CircleAvatar(
+                        radius: 25,
+                        backgroundImage:
+                            AssetImage('assets/images/apple_logo.png'),
+                      ),
+                      Spacer(),
+                      CircleAvatar(
+                        radius: 25,
+                        backgroundImage:
+                            AssetImage('assets/images/gmail_logo.png'),
+                      ),
+                      Spacer(),
+                      CircleAvatar(
+                        radius: 25,
+                        backgroundImage: AssetImage('assets/images/img.png'),
+                      ),
+                      Spacer(),
+                    ],
+                  )
+                : Container(),
             Spacer(
               flex: 2,
             ),

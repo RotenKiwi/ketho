@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ketho/Components/RoundedButton.dart';
+import 'package:ketho/Screens/Profile.dart';
+import 'package:ketho/Screens/Rewards.dart';
 
 import 'Feedback.dart';
 import 'Payments.dart';
 import 'TripHistory.dart';
-
 
 class HomepageDrawer extends StatelessWidget {
   const HomepageDrawer({
@@ -23,11 +25,9 @@ class HomepageDrawer extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Colors.orange,
-                      Colors.white,
-                    ]
-                )
-            ),
+                  Colors.orange,
+                  Colors.white,
+                ])),
             child: Column(
               children: [
                 Row(
@@ -44,8 +44,7 @@ class HomepageDrawer extends StatelessWidget {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(20)),
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
                             color: Colors.greenAccent,
                           ),
                           child: Padding(
@@ -98,8 +97,26 @@ class HomepageDrawer extends StatelessWidget {
           ListTile(
             title: Row(
               children: [
+                Icon(Icons.person_outline_rounded),
+                SizedBox(
+                  width: 8,
+                ),
+                Text('Profile'),
+              ],
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()));
+            },
+          ),
+          ListTile(
+            title: Row(
+              children: [
                 Icon(Icons.wallet),
-                SizedBox(width: 8,),
+                SizedBox(
+                  width: 8,
+                ),
                 Text('Payment and Credit'),
                 Spacer(),
                 Text('\$00.00'),
@@ -107,28 +124,34 @@ class HomepageDrawer extends StatelessWidget {
             ),
             onTap: () {
               Navigator.pop(context);
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentsScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PaymentsScreen()));
             },
           ),
           ListTile(
             title: Row(
               children: [
                 Icon(Icons.access_time_outlined),
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 Text('Trip History'),
               ],
             ),
             onTap: () {
               Navigator.pop(context);
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>TripHistoryPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => TripHistoryPage()));
             },
           ),
           ListTile(
             title: Row(
               children: [
                 Icon(Icons.shopify_outlined),
-                SizedBox(width: 8,),
-                Text('Payment and Credit'),
+                SizedBox(
+                  width: 8,
+                ),
+                Text('Rewards'),
                 Spacer(),
                 Container(
                   decoration: BoxDecoration(
@@ -137,28 +160,47 @@ class HomepageDrawer extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(5.0),
-                    child: Text('NEW', style: TextStyle(color: Colors.white),),
+                    child: Text(
+                      'NEW',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ],
             ),
             onTap: () {
               Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => RewardsPage()));
             },
           ),
           ListTile(
             title: Row(
               children: [
                 Icon(Icons.headphones),
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 Text('Contact Us'),
               ],
             ),
             onTap: () {
               Navigator.pop(context);
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>FeedBack()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => FeedBack()));
             },
           ),
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.only(left: 80.0, right: 80.0, top: 100),
+            child: RoundedButton(
+              text: 'Logout',
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+            ),
+          )
         ],
       ),
     );

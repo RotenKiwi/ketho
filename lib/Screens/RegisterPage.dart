@@ -13,11 +13,13 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   String username = '';
   String password = '';
-  String cPassword = '';
+  String cPassword = 'a';
+  String errorMessage = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Color(0xff77B4B5),
         title: Text(
@@ -90,8 +92,8 @@ class _RegisterPageState extends State<RegisterPage> {
             RoundedButton(
                 text: 'Register',
                 onPressed: () {
-                  user.users.contains(username)
-                      ? print('User already exists')
+                  username!=null && user.users.contains(username)
+                      ? errorMessage = 'User already exists'
                       : (password == cPassword)
                           ? (
                               user.addUser(username, cPassword),
@@ -100,8 +102,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                   MaterialPageRoute(
                                       builder: (context) => MapSample()))
                             )
-                          : print('Passwords dont match');
+                          : errorMessage = 'Passwords dont match';
+                  setState(() {
+
+                  });
                 }),
+            Text(errorMessage, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.red),),
             Spacer(
               flex: 2,
             ),

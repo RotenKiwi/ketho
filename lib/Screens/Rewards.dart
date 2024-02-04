@@ -102,11 +102,11 @@ class CouponTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
         children: [
           Spacer(flex: 1,),
-          Image.asset(image),
+          Image.asset(image, scale: 1.2,),
           SizedBox(width: 25,),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

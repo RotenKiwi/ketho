@@ -21,7 +21,7 @@ class MapSampleState extends State<MapSample> {
       Completer<GoogleMapController>();
 
   static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(1.4165892, 103.899942),
     zoom: 14.4746,
   );
 
@@ -31,10 +31,6 @@ class MapSampleState extends State<MapSample> {
       appBar: AppBar(
         title: Row(
           children: [
-            Icon(
-              Icons.person,
-              size: 35,
-            ),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Card(
@@ -61,12 +57,13 @@ class MapSampleState extends State<MapSample> {
             ),
             Spacer(),
             InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>RewardsPage()));
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RewardsPage()));
               },
               child: Icon(
-                  Icons.card_giftcard,
-                  size: 35,
+                Icons.card_giftcard,
+                size: 35,
               ),
             ),
           ],
@@ -77,7 +74,7 @@ class MapSampleState extends State<MapSample> {
         children: [
           SizedBox(
             width: double.infinity,
-            height: 380,
+            height: 350,
             child: GoogleMap(
               mapType: MapType.terrain,
               initialCameraPosition: _kGooglePlex,
@@ -96,9 +93,12 @@ class MapSampleState extends State<MapSample> {
               style: TextStyle(color: Colors.white, fontSize: 20),
             )),
           ),
-          Spacer(),
+          Spacer(
+            flex: 1,
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -133,27 +133,53 @@ class MapSampleState extends State<MapSample> {
                   )),
             ),
           ),
-          Spacer(),
+          Spacer(
+            flex: 1,
+          ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Spacer(),
-                Row(
-                  children: [
-                    Icon(Icons.wallet),
-                    Text('TopUp'),
-                  ],
+                Spacer(
+                  flex: 3,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PaymentsScreen()));
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.wallet),
+                      Text('TopUp'),
+                    ],
+                  ),
                 ),
                 Spacer(),
-                Row(
-                  children: [
-                    Icon(Icons.warning),
-                    Text('Report an Issue'),
-                  ],
+                Container(
+                  height: 20,
+                  width: 2,
+                  color: Colors.grey,
                 ),
                 Spacer(),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => FeedBack()));
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.warning),
+                      Text('Report an Issue'),
+                    ],
+                  ),
+                ),
+                Spacer(
+                  flex: 2,
+                ),
               ],
             ),
           ),
@@ -162,4 +188,3 @@ class MapSampleState extends State<MapSample> {
     );
   }
 }
-
