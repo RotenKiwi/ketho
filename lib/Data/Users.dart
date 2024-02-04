@@ -20,3 +20,5 @@ addUser(String username, String pass){
   users.add(username);
   password.add(pass);
 }
+
+int index = 0;

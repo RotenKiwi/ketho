@@ -57,13 +57,12 @@ class MapSampleState extends State<MapSample> {
             ),
             Spacer(),
             InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RewardsPage()));
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>RewardsPage()));
               },
               child: Icon(
-                Icons.card_giftcard,
-                size: 35,
+                  Icons.card_giftcard,
+                  size: 35,
               ),
             ),
           ],
@@ -74,7 +73,7 @@ class MapSampleState extends State<MapSample> {
         children: [
           SizedBox(
             width: double.infinity,
-            height: 350,
+            height: 380,
             child: GoogleMap(
               mapType: MapType.terrain,
               initialCameraPosition: _kGooglePlex,
@@ -93,12 +92,9 @@ class MapSampleState extends State<MapSample> {
               style: TextStyle(color: Colors.white, fontSize: 20),
             )),
           ),
-          Spacer(
-            flex: 1,
-          ),
+          Spacer(flex: 1,),
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -133,23 +129,16 @@ class MapSampleState extends State<MapSample> {
                   )),
             ),
           ),
-          Spacer(
-            flex: 1,
-          ),
+          Spacer(flex: 1,),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Spacer(
-                  flex: 3,
-                ),
+                Spacer(flex: 3,),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PaymentsScreen()));
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentsScreen()));
                   },
                   child: Row(
                     children: [
@@ -166,9 +155,8 @@ class MapSampleState extends State<MapSample> {
                 ),
                 Spacer(),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => FeedBack()));
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>FeedBack()));
                   },
                   child: Row(
                     children: [
@@ -177,9 +165,7 @@ class MapSampleState extends State<MapSample> {
                     ],
                   ),
                 ),
-                Spacer(
-                  flex: 2,
-                ),
+                Spacer(flex: 2,),
               ],
             ),
           ),
@@ -188,3 +174,4 @@ class MapSampleState extends State<MapSample> {
     );
   }
 }
+

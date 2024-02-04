@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../Data/Users.dart' as user;
+import '../Components/ProfileField.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('Profile'),
         backgroundColor: Colors.white,
@@ -60,9 +63,20 @@ class _ProfilePageState extends State<ProfilePage> {
                     )),
               ),
               ProfileField(
-                text: 'Email',
+                text: user.users[user.index],
+                onChanged: (value) {
+                  user.users.remove(user.index);
+                  user.users.add(value);
+                  user.index = user.users.indexOf(value);
+                },
               ),
-              ProfileField(text: 'Mobile Number'),
+              ProfileField(
+                text: user.password[user.index],
+                onChanged: (value) {
+                  user.password.remove(user.index);
+                  user.password.add(value);
+                },
+              ),
             ],
           ),
           Spacer(),
@@ -83,8 +97,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 25.0, vertical: 5.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
                 child: Container(
                     decoration: BoxDecoration(
                         border: Border(
@@ -116,8 +130,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     )),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 25.0, vertical: 5.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
                 child: Container(
                     decoration: BoxDecoration(
                         border: Border(
@@ -149,8 +163,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     )),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 25.0, vertical: 5.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
                 child: Container(
                     decoration: BoxDecoration(
                         border: Border(
@@ -186,44 +200,6 @@ class _ProfilePageState extends State<ProfilePage> {
           Spacer(),
         ],
       ),
-    );
-  }
-}
-
-class ProfileField extends StatelessWidget {
-  final String text;
-
-  const ProfileField({
-    Key? key,
-    required this.text,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
-      child: Container(
-          decoration: BoxDecoration(
-              border: Border(
-                  bottom: BorderSide(
-                      color: Colors.black, style: BorderStyle.solid))),
-          //color: Color(0xffC4EED0),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: Row(
-              children: [
-                Text(
-                  text,
-                  style: TextStyle(fontSize: 18),
-                ),
-                Spacer(),
-                Icon(
-                  Icons.chevron_right,
-                  size: 30,
-                ),
-              ],
-            ),
-          )),
     );
   }
 }

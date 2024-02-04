@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Spacer(
-              flex: 2,
+              flex: 1,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -65,6 +65,18 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: 'Email',
                         ),
                       ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      (errorMessage == 'User Does not Exist')
+                          ? Text(
+                              errorMessage,
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red),
+                            )
+                          : Container(),
                       TextFormField(
                         onChanged: (value) {
                           password = value;
@@ -74,6 +86,15 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         obscureText: true,
                       ),
+                      (errorMessage == 'Incorrect Password')
+                          ? Text(
+                              errorMessage,
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red),
+                            )
+                          : Container(),
                       TextButton(
                           onPressed: () {
                             Navigator.push(
@@ -96,19 +117,19 @@ class _LoginPageState extends State<LoginPage> {
                   user.users.contains(username)
                       ? (password ==
                               user.password[user.users.indexOf(username)])
-                          ? (Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MapSample())))
-                          : errorMessage = 'Incorrect Credentials'
+                          ? (
+                              user.index = user.users.indexOf(username),
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MapSample())),
+                            )
+                          : errorMessage = 'Incorrect Password'
                       : errorMessage = 'User Does not Exist';
-                  setState(() {
-
-                  });
+                  setState(() {});
                 }),
-            Text(errorMessage, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.red),),
             Spacer(
-              flex: 2,
+              flex: 3,
             ),
             (size.height < 5000)
                 ? Row(
@@ -143,6 +164,7 @@ class _LoginPageState extends State<LoginPage> {
               color: Color(0xff44959F),
               child: TextButton(
                 onPressed: () {
+                  user.index = -1;
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MapSample()));
                 },

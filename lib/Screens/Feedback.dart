@@ -141,11 +141,22 @@ class _FeedBackState extends State<FeedBack> {
                     SizedBox(
                       height: 5,
                     ),
-                    Text(
-                      'Email : hi@gmail.com',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                    InkWell(
+                      onTap: () async {
+                        Uri mail = Uri.parse(
+                            'mailto:hi@gmail.com.org?subject=ContactUs&body=Test%20Feedback');
+                        if (await launchUrl(mail)) {
+                          // success
+                        } else {
+                          print('Failed');
+                        }
+                      },
+                      child: Text(
+                        'Email : hi@gmail.com',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],

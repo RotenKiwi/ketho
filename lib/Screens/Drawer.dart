@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ketho/Components/RoundedButton.dart';
 import 'package:ketho/Screens/Profile.dart';
 import 'package:ketho/Screens/Rewards.dart';
-
+import '../Data/Users.dart' as user;
 import 'Feedback.dart';
 import 'Payments.dart';
 import 'TripHistory.dart';
@@ -39,7 +39,7 @@ class HomepageDrawer extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          'Kenneth Ho',
+                          (user.index == -1)?'Guest':'Kenneth Ho',
                           style: TextStyle(fontSize: 25),
                         ),
                         Container(
@@ -94,7 +94,7 @@ class HomepageDrawer extends StatelessWidget {
               ],
             ),
           ),
-          ListTile(
+          (user.index == -1)?Container():ListTile(
             title: Row(
               children: [
                 Icon(Icons.person_outline_rounded),
